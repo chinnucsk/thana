@@ -1,0 +1,4 @@
+thana
+=====
+
+Erlang IRC Bot
