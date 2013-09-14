@@ -5,7 +5,8 @@
   {registered, []},
   {applications, [
                   kernel,
-                  stdlib
+                  stdlib,
+		  lager
                  ]},
   {mod, { th_core_app, []}},
   {env, []}
