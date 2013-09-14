@@ -15,7 +15,6 @@ start_link() ->
 
 
 init([]) ->
-	?L_INFO("START"),
 	{ok,
 		{{one_for_one, 5, 10}, [
 		]}
