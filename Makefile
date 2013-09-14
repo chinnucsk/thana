@@ -1,8 +1,16 @@
 STAMPS := stamps
+STAMP_DEPS := $(STAMPS)/stamp-deps
 STAMP_COMPILE := $(STAMPS)/stamp-compile
 STAMP_GENERATE := $(STAMPS)/stamp-generate
 
-$(STAMP_COMPILE):
+$(STAMP_DEPS):
+	rebar get-deps
+	@mkdir -p $(@D)
+	touch $@
+
+deps: $(STAMP_DEPS)
+
+$(STAMP_COMPILE): $(STAMP_DEPS)
 	rebar compile
 	@mkdir -p $(@D)
 	touch $@
@@ -21,6 +29,6 @@ run: $(STAMP_GENERATE)
 
 clean:
 	rebar clean
-	rm -rf $(STAMPS)
+	rm -rf $(STAMPS) deps
 
-.PHONY: clean compile generate run
+.PHONY: clean compile generate run deps
