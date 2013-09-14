@@ -1,5 +1,5 @@
 
--module(myapp_sup).
+-module(th_core_sup).
 
 -behaviour(supervisor).
 
