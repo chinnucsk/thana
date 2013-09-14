@@ -11,6 +11,7 @@ ALLFILES := $(shell find * -xdev \
         -o -xtype f -print)
 
 ALLFILES := $(sort $(ALLFILES) $(ALL_GENERATED))
+APP_SOURCE := $(filter apps/%.app.src, $(ALLFILES))
 ERL_SOURCE := $(filter apps/%.erl, $(ALLFILES))
 ERL_HEADER := $(filter apps/%.hrl, $(ALLFILES))
 
@@ -21,7 +22,7 @@ $(STAMP_DEPS): rebar.config
 
 deps: $(STAMP_DEPS)
 
-$(STAMP_COMPILE): $(STAMP_DEPS) $(ERL_SOURCE)
+$(STAMP_COMPILE): $(STAMP_DEPS) $(APP_SOURCE) $(ERL_SOURCE)
 	rebar compile
 	@mkdir -p $(@D)
 	touch $@
