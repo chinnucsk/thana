@@ -1,4 +1,4 @@
-rel/erl_crash.dump
+apps/*/ebin
 deps
 stamps
 rel/thana
